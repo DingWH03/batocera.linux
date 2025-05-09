@@ -1,4 +1,4 @@
-name: Build Batocera Image
+name: Download Batocera Source Package
 
 on:
   workflow_dispatch:
@@ -14,30 +14,13 @@ jobs:
     env:
       BOARD: ${{ github.event.inputs.board }}
       DIRECT_BUILD: 1
+      TIMESTAMP: ${{ steps.datetag.outputs.timestamp }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           submodules: recursive
-
-      # 恢复 dl 缓存
-      - name: Restore Buildroot dl/ cache
-        uses: actions/cache@v3
-        with:
-          path: dl
-          key: dl-${{ runner.os }}-${{ env.BOARD }}
-          restore-keys: |
-            dl-${{ runner.os }}-
-
-      # 恢复 ccache 缓存
-      - name: Restore buildroot ccache
-        uses: actions/cache@v3
-        with:
-          path: buildroot-ccache
-          key: ccache-${{ runner.os }}-${{ env.BOARD }}
-          restore-keys: |
-            ccache-${{ runner.os }}-
 
       - name: Install build dependencies
         run: |
@@ -48,21 +31,20 @@ jobs:
           sudo apt-get install -y libc6:i386 libncurses6:i386 libstdc++6:i386
           pip3 install conan
 
+      - name: Generate Timestamp for Release Tag
+        id: datetag
+        run: |
+          echo "Timestamp: $(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "::set-output name=timestamp::$(date +'%Y-%m-%d')"
+
       - name: Build for ${{ env.BOARD }}
         run: |
-          make ${BOARD}-build
+          make ${BOARD}-source
 
-      - name: Find and move image
-        id: find_image
+      - name: Archive dl directory
         run: |
-          IMAGE=$(find output/images/batocera/images -type f -name "batocera-*.img.gz" | head -n1)
-          if [ -z "$IMAGE" ]; then
-            echo "❌ No image file found!" >&2
-            exit 1
-          fi
-          echo "Found image: $IMAGE"
-          mv "$IMAGE" .
-          echo "image_name=$(basename "$IMAGE")" >> $GITHUB_OUTPUT
+          # Create a tar.gz file for the dl directory
+          tar -czf "${BOARD}-dl-${{ env.TIMESTAMP }}.tar.gz" dl
 
       - name: Check for existing release
         id: check-release
@@ -71,7 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const tag = '${{ steps.datetag.outputs.tag_name }}'
+            const tag = `v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl`
             try {
               const release = await github.rest.repos.getReleaseByTag({
                 owner: context.repo.owner,
@@ -94,8 +76,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name:    ${{ steps.datetag.outputs.tag_name }}
-          release_name: "Batocera ${{ steps.datetag.outputs.tag_name }}"
+          tag_name:    v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl
+          release_name: "v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl"
           draft:       false
           prerelease:  false
 
@@ -108,26 +90,12 @@ jobs:
             echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Upload image asset
+      - name: Upload dl archive asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url:   ${{ steps.set-upload-url.outputs.upload_url }}
-          asset_path:   ./${{ steps.find_image.outputs.image_name }}
-          asset_name:   ${{ steps.find_image.outputs.image_name }}
+          asset_path:   ./${{ env.BOARD }}-dl-${{ env.TIMESTAMP }}.tar.gz
+          asset_name:   ${BOARD}-dl-${{ env.TIMESTAMP }}.tar.gz
           asset_content_type: application/gzip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # 保存 dl 缓存
-      - name: Save Buildroot dl/ cache
-        uses: actions/cache@v3
-        with:
-          path: dl
-          key: dl-${{ runner.os }}-${{ env.BOARD }}
-          
-      # 保存 ccache 缓存
-      - name: Save buildroot ccache
-        uses: actions/cache@v3
-        with:
-          path: buildroot-ccache
-          key: ccache-${{ runner.os }}-${{ env.BOARD }}
