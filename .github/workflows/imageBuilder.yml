@@ -1,0 +1,102 @@
+name: Build Batocera Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      board:
+        description: "Board name (e.g., jh7110)"
+        required: true
+        default: "jh7110"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BOARD: ${{ github.event.inputs.board }}
+      DIRECT_BUILD: 1
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential git libncurses5-dev libssl-dev mercurial texinfo zip default-jre imagemagick subversion autoconf automake bison scons libglib2.0-dev bc mtools u-boot-tools flex wget cpio dosfstools libtool gcc-multilib g++-multilib python3-pip
+          sudo dpkg --add-architecture i386
+          echo "deb http://security.ubuntu.com/ubuntu focal-security main universe" | sudo tee -a /etc/apt/sources.list
+          sudo apt-get update
+          sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
+          pip3 install conan
+
+      - name: Build for ${{ env.BOARD }}
+        run: |
+          make ${BOARD}-build
+
+      - name: Find and move image
+        id: find_image
+        run: |
+          IMAGE=$(find output/images/batocera/images -type f -name "batocera-*.img.gz" | head -n1)
+          if [ -z "$IMAGE" ]; then
+            echo "❌ No image file found!" >&2
+            exit 1
+          fi
+          echo "Found image: $IMAGE"
+          mv "$IMAGE" .
+          echo "image_name=$(basename "$IMAGE")" >> $GITHUB_OUTPUT
+
+      - name: Check for existing release
+        id: check-release
+        uses: actions/github-script@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const tag = '${{ steps.datetag.outputs.tag_name }}'
+            try {
+              const release = await github.rest.repos.getReleaseByTag({
+                owner: context.repo.owner,
+                repo:  context.repo.repo,
+                tag
+              })
+              core.setOutput('upload_url', release.data.upload_url)
+            } catch (error) {
+              if (error.status === 404) {
+                core.setOutput('upload_url', '')
+              } else {
+                throw error
+              }
+            }
+
+      - name: Create release if it doesn’t exist
+        if: steps.check-release.outputs.upload_url == ''
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name:    ${{ steps.datetag.outputs.tag_name }}
+          release_name: "Batocera ${{ steps.datetag.outputs.tag_name }}"
+          draft:       false
+          prerelease:  false
+
+      - name: Set final upload_url
+        id: set-upload-url
+        run: |
+          if [[ "${{ steps.check-release.outputs.upload_url }}" != "" ]]; then
+            echo "upload_url=${{ steps.check-release.outputs.upload_url }}" >> $GITHUB_OUTPUT
+          else
+            echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload image asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url:   ${{ steps.set-upload-url.outputs.upload_url }}
+          asset_path:   ./${{ steps.find_image.outputs.image_name }}
+          asset_name:   ${{ steps.find_image.outputs.image_name }}
+          asset_content_type: application/gzip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
