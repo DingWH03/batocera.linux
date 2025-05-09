@@ -14,7 +14,6 @@ jobs:
     env:
       BOARD: ${{ github.event.inputs.board }}
       DIRECT_BUILD: 1
-      TIMESTAMP: ${{ steps.datetag.outputs.timestamp }}
 
     steps:
       - name: Checkout repository
@@ -33,9 +32,7 @@ jobs:
 
       - name: Generate Timestamp for Release Tag
         id: datetag
-        run: |
-          echo "Timestamp: $(date +'%Y-%m-%d')" >> $GITHUB_ENV
-          echo "::set-output name=timestamp::$(date +'%Y-%m-%d')"
+        run: echo "TIMESTAMP=$(date +'%Y-%m')" >> $GITHUB_ENV
 
       - name: Build for ${{ env.BOARD }}
         run: |
@@ -53,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const tag = `v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl`
+            const tag = `v${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl`
             try {
               const release = await github.rest.repos.getReleaseByTag({
                 owner: context.repo.owner,
@@ -76,8 +73,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name:    v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl
-          release_name: "v2025-5-${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl"
+          tag_name:    v${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl
+          release_name: "v${{ env.TIMESTAMP }}-${{ env.BOARD }}-package-dl"
           draft:       false
           prerelease:  false
 
