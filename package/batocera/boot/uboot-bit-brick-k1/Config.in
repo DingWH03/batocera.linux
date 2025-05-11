@@ -1,0 +1,4 @@
+config BR2_PACKAGE_UBOOT_BIT_BRICK_K1
+    bool "uboot files for Bit-Brick-K1"
+    help
+        uboot files for Bit-Brick-K1

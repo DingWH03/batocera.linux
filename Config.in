@@ -59,6 +59,8 @@ menu "System"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-4a/Config.in"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-3b/Config.in"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-5-ultra/Config.in"
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-bit-brick-k1/Config.in
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/opensbi-bit-brick-k1/Config.in
   endmenu
 
   menu "Toolchain"
@@ -82,6 +84,7 @@ menu "System"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/firmwares/firmware-esp8089/Config.in"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/firmwares/ti-firmware/Config.in"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/firmwares/broadcom-bt-firmware/Config.in"
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/firmwares/firmware-bit-brick-k1/Config.in"
   endmenu
 
   menu "GPU"

@@ -92,6 +92,7 @@ if BR2_PACKAGE_BATOCERA_TARGET_X86_ANY		|| \
    BR2_PACKAGE_BATOCERA_TARGET_BCM2711		|| \
    BR2_PACKAGE_BATOCERA_TARGET_BCM2712		|| \
    BR2_PACKAGE_BATOCERA_TARGET_JH7110		|| \
+   BR2_PACKAGE_BATOCERA_TARGET_K1		|| \
    BR2_PACKAGE_BATOCERA_TARGET_H616		|| \
    BR2_PACKAGE_BATOCERA_TARGET_AMLOGIC_GLES3	|| \
    BR2_PACKAGE_BATOCERA_TARGET_ROCKCHIP_GLES3	|| \
@@ -153,7 +154,8 @@ config BR2_PACKAGE_BATOCERA_SYSTEM
 	bool "batocera.linux minimal"
 
 	# RISC-V support needs a hack here to declare as RV64GC, needed for Rust
-	select BR2_RISCV_ISA_RVC		if BR2_PACKAGE_BATOCERA_TARGET_JH7110
+	select BR2_RISCV_ISA_RVC		if BR2_PACKAGE_BATOCERA_TARGET_JH7110 || BR2_PACKAGE_BATOCERA_TARGET_K1
+
 
 	# minimal system required packages
 	select BR2_TARGET_BATOCERA_IMAGES_DEFINITIONS
@@ -372,6 +374,7 @@ config BR2_PACKAGE_BATOCERA_SYSTEM
 						    BR2_PACKAGE_BATOCERA_TARGET_SM8250	|| \
 							BR2_PACKAGE_BATOCERA_TARGET_SM8550	|| \
 						    BR2_PACKAGE_BATOCERA_TARGET_JH7110	|| \
+							BR2_PACKAGE_BATOCERA_TARGET_K1		|| \
 							BR2_PACKAGE_BATOCERA_TARGET_RK3588  || \
 							BR2_PACKAGE_BATOCERA_TARGET_RK3588_SDIO
 
@@ -576,6 +579,7 @@ config BR2_TARGET_BATOCERA_IMAGES_DEFINITIONS
 	default "qualcomm/sm8250/rp5 qualcomm/sm8250/rpmini"						if BR2_PACKAGE_BATOCERA_TARGET_SM8250
 	default "qualcomm/sm8550/odin2 qualcomm/sm8550/odin2portal"					if BR2_PACKAGE_BATOCERA_TARGET_SM8550
 	default "starfive/jh7110"   							if BR2_PACKAGE_BATOCERA_TARGET_JH7110
+	default "spacemit/k1/bit-brick"   							if BR2_PACKAGE_BATOCERA_TARGET_K1
 	default "amlogic/s922x/ogu amlogic/s922x/gtkingpro amlogic/s922x/gtking amlogic/s922x/odroidn2l amlogic/s922x/vim3 amlogic/s922x/odroidn2 amlogic/s922x/odroidn2plus amlogic/s922x/zero2" \
 													if BR2_PACKAGE_BATOCERA_TARGET_S922X
 	default "amlogic/s905/odroidc2 amlogic/s905/tvbox amlogic/s905/lepotato amlogic/s905/vim amlogic/s905/p201 amlogic/s905/lepotatov2 amlogic/s905/minix-neo-u1" \
@@ -709,6 +713,9 @@ config BR2_PACKAGE_BATOCERA_TARGET_XU4
 # -------------------------------------
 config BR2_PACKAGE_BATOCERA_TARGET_JH7110
 	bool "jh7110"
+
+config BR2_PACKAGE_BATOCERA_TARGET_K1
+	bool "k1"
 
 endchoice
 
@@ -1824,6 +1831,7 @@ config BR2_PACKAGE_BATOCERA_KODI21
 					   BR2_PACKAGE_BATOCERA_TARGET_RK3588_SDIO || \
 					   BR2_PACKAGE_BATOCERA_TARGET_S905GEN3	  || \
 					   BR2_PACKAGE_BATOCERA_TARGET_JH7110	  || \
+					   BR2_PACKAGE_BATOCERA_TARGET_K1	  || \
 					   BR2_PACKAGE_BATOCERA_TARGET_ODIN		  || \
 					   BR2_PACKAGE_BATOCERA_TARGET_SM8250	  || \
 					   BR2_PACKAGE_BATOCERA_TARGET_SM8550

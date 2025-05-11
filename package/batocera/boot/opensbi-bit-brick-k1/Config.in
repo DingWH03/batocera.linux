@@ -1,0 +1,4 @@
+config BR2_PACKAGE_OPENSBI_BIT_BRICK_K1
+    bool "opensbi files for Bit-Brick-K1"
+    help
+        opensbi files for Bit-Brick-K1

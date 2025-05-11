@@ -1,0 +1,2 @@
+config BR2_PACKAGE_FIRMWARE_BIT_BRICK_K1
+	bool "firmware-bit-brick-k1"
