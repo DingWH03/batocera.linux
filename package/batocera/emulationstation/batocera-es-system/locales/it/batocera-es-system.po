@@ -5701,7 +5701,7 @@ msgstr "Croce"
 #. TRANSLATION: hypseus-singe/uzem
 msgctxt "game_options"
 msgid "Crosshairs in supported games e.g. ActionMax, Maddog II."
-msgstr ""
+msgstr "Mirini nei giochi che lo supportano es. ActionMax, Maddog II."
 
 #. TRANSLATION: mohaa.keys, quake2.keys
 msgctxt "keys_files"
@@ -10234,7 +10234,7 @@ msgstr "MIRINO PISTOLA"
 #. TRANSLATION: hypseus-singe/uzem
 msgctxt "game_options"
 msgid "LIGHT GUN CROSSHAIRS"
-msgstr ""
+msgstr "MIRINI PISTOLE"
 
 #. TRANSLATION: dolphin, rpcs3, shared
 msgctxt "game_options"

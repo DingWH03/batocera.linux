@@ -265,6 +265,20 @@ def createLibretroConfig(
     retroarchConfig['video_font_enable'] = '"true"'
     retroarchConfig['notification_show_remap_load'] = '"false"'
 
+    language = system.config.get_str('retroarch.user_language', system.config.get_str('system.language'))
+    # RETRO_LANGUAGE_JAPANESE = 1
+    if language == '1' or language == 'ja_JP':
+        retroarchConfig['video_font_path'] = "/usr/share/fonts/truetype/noto/NotoSansJP-VF.ttf"
+    # RETRO_LANGUAGE_KOREAN = 10
+    elif language == '10' or language == 'ko_KR':
+        retroarchConfig['video_font_path'] = "/usr/share/fonts/truetype/nanum/NanumGothicBold.ttf"
+    # RETRO_LANGUAGE_CHINESE_TRADITIONAL = 11
+    elif language == '11' or language == 'zh_TW':
+        retroarchConfig['video_font_path'] = "/usr/share/fonts/truetype/noto/NotoSansTC-VF.ttf"
+    # RETRO_LANGUAGE_CHINESE_SIMPLIFIED = 12
+    elif language == '12' or language == 'zh_CN':
+        retroarchConfig['video_font_path'] = "/usr/share/fonts/truetype/noto/NotoSansSC-VF.ttf"
+
     # prevent displaying "QUICK MENU" with "No Items" after DOSBox Pure, TyrQuake and PrBoom games exit
     retroarchConfig['load_dummy_on_core_shutdown'] = '"false"'
 

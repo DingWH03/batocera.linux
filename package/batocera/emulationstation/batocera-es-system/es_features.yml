@@ -8337,6 +8337,11 @@ flycast:
           choices:
             "Off": no
             "On":  yes
+        flycast_per_game_vmu:
+          group: ADVANCED OPTIONS
+          prompt:      PER-GAME VMU
+          description: When enabled, each game has its own VMU on port 1 of controller 1.
+          preset: switchauto
         flycast_ctrl1_pack:
           group: ADVANCED OPTIONS
           prompt:      CONTROLLER 1 FEATURE PACK
