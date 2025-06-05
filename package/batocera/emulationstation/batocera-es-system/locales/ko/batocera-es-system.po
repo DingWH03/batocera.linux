@@ -2888,11 +2888,6 @@ msgctxt "game_options"
 msgid "All Timers"
 msgstr "모든 타이머"
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "All VMUs"
-msgstr ""
-
 #. TRANSLATION: xenia, xenia-canary
 msgctxt "game_options"
 msgid "All possible licenses (Not recommended)"
@@ -9351,11 +9346,8 @@ msgstr "수평 (가로)"
 #. TRANSLATION: lindbergh-loader
 msgctxt "game_options"
 msgid ""
-"House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency of "
-"your processor."
+"House of the Dead 4 speed fix. Select CPU base frequency of your processor."
 msgstr ""
-"하우스 오브 더 데드 4 속도 수정합니다. 게임을 프로세서의 CPU 최소 주파수로 설"
-"정합니다."
 
 #. TRANSLATION: libretro/mame, mame/pcsx2
 msgctxt "game_options"
@@ -12016,7 +12008,7 @@ msgctxt "game_options"
 msgid "Off"
 msgstr "끄기"
 
-#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/flycast, libretro/mame, ...
+#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/mame, libretro/mamevirtual, ...
 msgctxt "game_options"
 msgid "Off (Default)"
 msgstr "끄기 (기본)"
@@ -12147,11 +12139,6 @@ msgstr "게임 감지 메시지 켜기"
 msgctxt "game_options"
 msgid "On with rewind support"
 msgstr "되감기 지원으로 켜기"
-
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "Only A1"
-msgstr ""
 
 #. TRANSLATION: rpcs3
 msgctxt "game_options"
@@ -12464,7 +12451,7 @@ msgctxt "game_options"
 msgid "PER-GAME SAVES"
 msgstr "게임당 저장"
 
-#. TRANSLATION: flycast/dolphin, libretro/flycast
+#. TRANSLATION: flycast/dolphin
 msgctxt "game_options"
 msgid "PER-GAME VMU"
 msgstr ""
@@ -17631,11 +17618,6 @@ msgctxt "game_options"
 msgid "When enabled, each game has its own VMU on port 1 of controller 1."
 msgstr ""
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "When enabled, each game has its own set of VMU save files."
-msgstr ""
-
 #. TRANSLATION: drastic
 msgctxt "game_options"
 msgid ""
@@ -18380,6 +18362,14 @@ msgstr "노란색/파란색"
 #~ msgstr ""
 #~ "하우스 오브 데드 4 속도 수정입니다. 게임을 프로세서의 CPU 기본 주파수로 설"
 #~ "정합니다."
+
+#~ msgctxt "game_options"
+#~ msgid ""
+#~ "House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency "
+#~ "of your processor."
+#~ msgstr ""
+#~ "하우스 오브 더 데드 4 속도 수정합니다. 게임을 프로세서의 CPU 최소 주파수"
+#~ "로 설정합니다."
 
 #~ msgctxt "keys_files"
 #~ msgid "Menu N"

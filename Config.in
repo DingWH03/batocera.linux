@@ -61,6 +61,9 @@ menu "System"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-5-ultra/Config.in"
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-bit-brick-k1/Config.in
     source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/opensbi-bit-brick-k1/Config.in
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-5-max/Config.in"
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-5/Config.in"
+    source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/boot/uboot-orangepi-5b/Config.in"
   endmenu
 
   menu "Toolchain"
@@ -576,6 +579,7 @@ menu "Utils"
   source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/utils/moonlight-embedded/Config.in"
   source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/utils/wireguard-service/Config.in"
   source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/utils/labwc/Config.in"
+  source "$BR2_EXTERNAL_BATOCERA_PATH/package/batocera/utils/wtype/Config.in"
 endmenu
 
 menu "Cases"

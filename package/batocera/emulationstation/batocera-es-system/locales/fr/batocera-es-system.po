@@ -2894,11 +2894,6 @@ msgctxt "game_options"
 msgid "All Timers"
 msgstr "Toutes les minuteries"
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "All VMUs"
-msgstr ""
-
 #. TRANSLATION: xenia, xenia-canary
 msgctxt "game_options"
 msgid "All possible licenses (Not recommended)"
@@ -9439,11 +9434,8 @@ msgstr "Horizontal"
 #. TRANSLATION: lindbergh-loader
 msgctxt "game_options"
 msgid ""
-"House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency of "
-"your processor."
+"House of the Dead 4 speed fix. Select CPU base frequency of your processor."
 msgstr ""
-"Correction de la vitesse House of the Dead 4. Définit le jeu sur la "
-"fréquence minimale du processeur de votre processeur."
 
 #. TRANSLATION: libretro/mame, mame/pcsx2
 msgctxt "game_options"
@@ -12126,7 +12118,7 @@ msgctxt "game_options"
 msgid "Off"
 msgstr "Non"
 
-#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/flycast, libretro/mame, ...
+#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/mame, libretro/mamevirtual, ...
 msgctxt "game_options"
 msgid "Off (Default)"
 msgstr "Désactivé (par défaut)"
@@ -12259,11 +12251,6 @@ msgstr "Activer avec message de détection de jeu"
 msgctxt "game_options"
 msgid "On with rewind support"
 msgstr "Activer avec prise en charge du rembobinage"
-
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "Only A1"
-msgstr ""
 
 #. TRANSLATION: rpcs3
 msgctxt "game_options"
@@ -12581,7 +12568,7 @@ msgctxt "game_options"
 msgid "PER-GAME SAVES"
 msgstr "SAUVEGARDES PAR JEU"
 
-#. TRANSLATION: flycast/dolphin, libretro/flycast
+#. TRANSLATION: flycast/dolphin
 msgctxt "game_options"
 msgid "PER-GAME VMU"
 msgstr ""
@@ -17808,11 +17795,6 @@ msgctxt "game_options"
 msgid "When enabled, each game has its own VMU on port 1 of controller 1."
 msgstr ""
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "When enabled, each game has its own set of VMU save files."
-msgstr ""
-
 #. TRANSLATION: drastic
 msgctxt "game_options"
 msgid ""
@@ -19475,6 +19457,14 @@ msgstr "jaune/bleu"
 #~ msgstr ""
 #~ "House of the Dead 4 speed fix. Règle le jeu sur la fréquence de base de "
 #~ "votre processeur."
+
+#~ msgctxt "game_options"
+#~ msgid ""
+#~ "House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency "
+#~ "of your processor."
+#~ msgstr ""
+#~ "Correction de la vitesse House of the Dead 4. Définit le jeu sur la "
+#~ "fréquence minimale du processeur de votre processeur."
 
 #~ msgctxt "game_options"
 #~ msgid "How the emulator should sort transparent objects."

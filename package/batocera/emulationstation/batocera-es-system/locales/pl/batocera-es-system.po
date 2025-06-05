@@ -2894,11 +2894,6 @@ msgctxt "game_options"
 msgid "All Timers"
 msgstr "Wszystkie timer'y"
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "All VMUs"
-msgstr "Wszystkie VMU"
-
 #. TRANSLATION: xenia, xenia-canary
 msgctxt "game_options"
 msgid "All possible licenses (Not recommended)"
@@ -9432,11 +9427,8 @@ msgstr "Poziomo"
 #. TRANSLATION: lindbergh-loader
 msgctxt "game_options"
 msgid ""
-"House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency of "
-"your processor."
+"House of the Dead 4 speed fix. Select CPU base frequency of your processor."
 msgstr ""
-"Poprawka prędkości House of the Dead 4. Ustawia grę na minimalną "
-"częstotliwość procesora."
 
 #. TRANSLATION: libretro/mame, mame/pcsx2
 msgctxt "game_options"
@@ -12118,7 +12110,7 @@ msgctxt "game_options"
 msgid "Off"
 msgstr "Wyłączone"
 
-#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/flycast, libretro/mame, ...
+#. TRANSLATION: cemu, flycast/dolphin, libretro/dosbox_pure, libretro/mame, libretro/mamevirtual, ...
 msgctxt "game_options"
 msgid "Off (Default)"
 msgstr "Wyłączone (domyślnie)"
@@ -12252,11 +12244,6 @@ msgstr "Włączone z komunikatem wykrywania gry"
 msgctxt "game_options"
 msgid "On with rewind support"
 msgstr "Włączone z obsługą przewijania"
-
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "Only A1"
-msgstr "Tylko A1"
 
 #. TRANSLATION: rpcs3
 msgctxt "game_options"
@@ -12573,7 +12560,7 @@ msgctxt "game_options"
 msgid "PER-GAME SAVES"
 msgstr "ZAPISY NA KAŻDĄ GRĘ"
 
-#. TRANSLATION: flycast/dolphin, libretro/flycast
+#. TRANSLATION: flycast/dolphin
 msgctxt "game_options"
 msgid "PER-GAME VMU"
 msgstr "VMU NA GRĘ"
@@ -17788,11 +17775,6 @@ msgstr ""
 "Po włączeniu tej opcji każda gra ma własną jednostkę VMU na porcie 1 "
 "kontrolera 1."
 
-#. TRANSLATION: libretro/flycast
-msgctxt "game_options"
-msgid "When enabled, each game has its own set of VMU save files."
-msgstr "Po włączeniu tej opcji każda gra ma własny zestaw plików zapisu VMU."
-
 #. TRANSLATION: drastic
 msgctxt "game_options"
 msgid ""
@@ -18807,6 +18789,10 @@ msgstr "żółty/niebieski"
 #~ msgstr "Dostosuj moc procesora kiedy w grze."
 
 #~ msgctxt "game_options"
+#~ msgid "All VMUs"
+#~ msgstr "Wszystkie VMU"
+
+#~ msgctxt "game_options"
 #~ msgid "Allow mapping Future Pinabll with Pad to Keyboard."
 #~ msgstr "Zezwól na mapowanie Future Pinball za pomocą Pada na klawiaturę."
 
@@ -19624,6 +19610,14 @@ msgstr "żółty/niebieski"
 #~ "częstotliwość procesora."
 
 #~ msgctxt "game_options"
+#~ msgid ""
+#~ "House of the Dead 4 speed fix. Sets the game to the CPU minimum frequency "
+#~ "of your processor."
+#~ msgstr ""
+#~ "Poprawka prędkości House of the Dead 4. Ustawia grę na minimalną "
+#~ "częstotliwość procesora."
+
+#~ msgctxt "game_options"
 #~ msgid "How the emulator should sort transparent objects."
 #~ msgstr "Sortowanie przezroczystych obiektów."
 
@@ -19886,6 +19880,10 @@ msgstr "żółty/niebieski"
 #~ msgctxt "game_options"
 #~ msgid "On (slower)"
 #~ msgstr "Włączone (wolniej)"
+
+#~ msgctxt "game_options"
+#~ msgid "Only A1"
+#~ msgstr "Tylko A1"
 
 #~ msgctxt "keys_files"
 #~ msgid "Open Dolphin-triforce's menu"
@@ -20519,6 +20517,11 @@ msgstr "żółty/niebieski"
 #~ msgctxt "game_options"
 #~ msgid "WRITE DEPTH BUFFER"
 #~ msgstr "ZAPIS BUFORA GŁĘBOKOŚCI"
+
+#~ msgctxt "game_options"
+#~ msgid "When enabled, each game has its own set of VMU save files."
+#~ msgstr ""
+#~ "Po włączeniu tej opcji każda gra ma własny zestaw plików zapisu VMU."
 
 #~ msgctxt "game_options"
 #~ msgid "Widescreen"
